@@ -32,9 +32,13 @@ See: .planning/PROJECT.md (updated 2026-07-19)
   - Glass panels: Hero + Contact only
   - Shapes: Blob, Wave, Ellipse
 
+## Phase Plans
+
+- Phase 1: `01-01-PLAN.md` — 1 plan, Wave 1, covers all 10 requirements (SETUP-01 through SETUP-04, DESIGN-01 through DESIGN-05, A11Y-02)
+
 ## Next Action
 
-Run `/gsd-plan-phase 1` to create the execution plan for Phase 1.
+Run `/gsd-execute-phase 1` to execute Phase 1.
 
 ---
 *State created: 2026-07-19*
