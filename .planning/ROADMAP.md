@@ -4,6 +4,10 @@
 **Goal:** Project foundation — Next.js, Tailwind, glassmorphism components, Frutiger cyber palette
 **Duration:** ~2-3 hours
 **Requirements covered:** SETUP-01 through SETUP-04, DESIGN-01 through DESIGN-05, A11Y-02
+**Plans:** 1 plan
+
+Plans:
+- [ ] 01-01-PLAN.md — Initialize Next.js 16, Tailwind v4, glassmorphism components, organic shapes, typography, global styles
 
 Tasks:
 1. Initialize Next.js project with App Router
