@@ -11,7 +11,7 @@ See: .planning/PROJECT.md (updated 2026-07-19)
 
 | Phase | Status | Notes |
 |-------|--------|-------|
-| 1 | ○ Pending | Scaffolding & Design System |
+| 1 | ✅ Complete | Scaffolding & Design System — build verified, static export working |
 | 2 | ○ Pending | Content Pages & Animations |
 | 3 | ○ Pending | Hosting, Accessibility & Polish |
 | 4 | ○ Pending | 3D Enhancements |
@@ -34,11 +34,12 @@ See: .planning/PROJECT.md (updated 2026-07-19)
 
 ## Phase Plans
 
-- Phase 1: `01-01-PLAN.md` — 1 plan, Wave 1, covers all 10 requirements (SETUP-01 through SETUP-04, DESIGN-01 through DESIGN-05, A11Y-02)
+- Phase 1: `01-01-PLAN.md` — 1 plan, Wave 1 ✅ Complete (2026-07-20)
+- Phase 1: `01-01-SUMMARY.md` — Execution summary with verification results
 
 ## Next Action
 
-Run `/gsd-execute-phase 1` to execute Phase 1.
+Run `/gsd-execute-phase 2` to execute Phase 2.
 
 ---
 *State created: 2026-07-19*
