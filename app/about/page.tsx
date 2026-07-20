@@ -3,6 +3,7 @@ import Footer from "@/components/layout/Footer";
 import GlassPanel from "@/components/glass/GlassPanel";
 import Blob from "@/components/shapes/Blob";
 import Ellipse from "@/components/shapes/Ellipse";
+import ScrollReveal from "@/components/animation/ScrollReveal";
 import { aboutContent } from "@/lib/data/portfolio";
 
 export default function AboutPage() {
@@ -23,18 +24,22 @@ export default function AboutPage() {
       <Navigation />
 
       <main className="flex-1 px-6 pt-28 pb-16 max-w-4xl mx-auto w-full">
-        <GlassPanel className="p-8 md:p-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 gradient-primary bg-clip-text text-transparent">
-            {aboutContent.title}
-          </h1>
-          <p className="text-lg text-surface/70 mb-10">
-            {aboutContent.description}
-          </p>
+        <ScrollReveal>
+          <GlassPanel className="p-8 md:p-12 mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 gradient-primary bg-clip-text text-transparent">
+              {aboutContent.title}
+            </h1>
+            <p className="text-lg text-surface/70 leading-relaxed">
+              {aboutContent.description}
+            </p>
+          </GlassPanel>
+        </ScrollReveal>
 
-          <div className="space-y-8">
-            {aboutContent.sections.map((section) => (
-              <div key={section.heading}>
-                <h2 className="text-2xl font-semibold text-primary mb-3">
+        <div className="space-y-6">
+          {aboutContent.sections.map((section, index) => (
+            <ScrollReveal key={section.heading} delay={index * 0.1}>
+              <GlassPanel className="p-8">
+                <h2 className="text-2xl font-semibold text-primary mb-4">
                   {section.heading}
                 </h2>
                 {"body" in section ? (
@@ -42,21 +47,21 @@ export default function AboutPage() {
                     {section.body}
                   </p>
                 ) : (
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <ul className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                     {section.items.map((item) => (
                       <li
                         key={item}
-                        className="glass-panel px-4 py-3 rounded-[var(--radius-card)] text-surface/80 font-medium"
+                        className="glass-panel px-4 py-3 rounded-[var(--radius-card)] text-surface/80 font-medium text-center"
                       >
                         {item}
                       </li>
                     ))}
                   </ul>
                 )}
-              </div>
-            ))}
-          </div>
-        </GlassPanel>
+              </GlassPanel>
+            </ScrollReveal>
+          ))}
+        </div>
       </main>
 
       <Footer />
