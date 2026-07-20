@@ -4,11 +4,15 @@ import GlassPanel from "@/components/glass/GlassPanel";
 import Blob from "@/components/shapes/Blob";
 import Wave from "@/components/shapes/Wave";
 import ScrollReveal from "@/components/animation/ScrollReveal";
+import HeroSceneLoader from "@/components/3d/HeroSceneLoader";
 import { heroContent } from "@/lib/data/portfolio";
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden">
+      {/* 3D Hero Scene (lazy-loaded) */}
+      <HeroSceneLoader />
+
       {/* Background organic shapes */}
       <Blob
         color="rgba(109, 179, 242, 0.2)"
@@ -23,7 +27,7 @@ export default function Home() {
 
       <Navigation />
 
-      <main className="flex-1 flex items-center justify-center px-6 pt-24">
+      <main className="flex-1 flex items-center justify-center px-6 pt-24 relative z-10">
         <ScrollReveal className="w-full">
           <GlassPanel variant="hero" className="max-w-3xl text-center p-12">
             <h1 className="text-5xl md:text-7xl font-bold mb-4 gradient-primary bg-clip-text text-transparent">
