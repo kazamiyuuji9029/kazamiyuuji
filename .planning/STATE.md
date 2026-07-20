@@ -64,10 +64,12 @@ See: .planning/PROJECT.md (updated 2026-07-19)
 - Phase 3: `03-01-PLAN.md` — 1 plan, Wave 1 ✅ Complete (2026-07-20)
 - Phase 3: `03-01-SUMMARY.md` — Execution summary with deploy results
 - Phase 3: `03-01-CONTEXT.md` — Phase 3 context (created 2026-07-20)
+- Phase 4: `04-01-PLAN.md` — 1 plan, Wave 1, covers 3D-01 through 3D-03
+- Phase 4: `04-01-CONTEXT.md` — Phase 4 context (created 2026-07-20)
 
 ## Next Action
 
-Run `/gsd-plan-phase 4` to plan Phase 4 (3D Enhancements), then `/gsd-execute-phase 4` to execute.
+Run `/gsd-execute-phase 4` to execute Phase 4 (3D Enhancements).
 
 ---
 *State created: 2026-07-19*
