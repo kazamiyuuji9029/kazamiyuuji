@@ -1,12 +1,12 @@
 /**
  * Portfolio content data
- * Centralized content for all pages — easy to update without touching components.
+ * Centralized content for all pages — Mochi, Game Developer
  */
 
 export const siteMetadata = {
-  title: "Kazamiyuuji | Portfolio",
-  description: "Frutiger cyber aesthetic portfolio — clean, organic, futuristic",
-  author: "Kazamiyuuji",
+  title: "Mochi | Game Developer",
+  description: "Game developer portfolio — Frutiger Aero aesthetic",
+  author: "Mochi",
 };
 
 export const navigationLinks = [
@@ -17,45 +17,45 @@ export const navigationLinks = [
 ] as const;
 
 export const heroContent = {
-  name: "Kazamiyuuji",
-  tagline: "Designing the future, one pixel at a time.",
+  name: "Mochi",
+  tagline: "Crafting Worlds, One Pixel at a Time",
   subtitle:
-    "Creative developer crafting immersive digital experiences with Frutiger cyber aesthetics — where organic meets algorithmic.",
+    "Game developer passionate about creating immersive experiences — from indie 2D adventures to 3D worlds.",
   cta: {
-    primary: { label: "About Me", href: "/about" },
-    secondary: { label: "View Work", href: "/gallery" },
+    primary: { label: "View My Work", href: "/gallery" },
+    secondary: { label: "Contact Me", href: "/contact" },
   },
 } as const;
 
 export const aboutContent = {
   title: "About Me",
   description:
-    "A creative developer and designer obsessed with the intersection of nature and technology. I build digital experiences that feel alive — breathing, flowing, evolving.",
+    "Hi, I'm Mochi — a game developer who loves bringing ideas to life through code and creativity.",
   sections: [
     {
-      heading: "Philosophy",
-      body: "I believe in design that feels alive — organic shapes, clean gradients, and interfaces that breathe. Every project is an exploration of how technology can mirror the beauty of the natural world, creating digital spaces that feel both futuristic and organic.",
+      heading: "What I Do",
+      body: "I create games across all platforms — 2D indie titles, 3D adventures, web-based casual games, and everything in between. Every project is a new opportunity to push boundaries and create something memorable.",
     },
     {
-      heading: "What I Do",
-      body: "I specialize in frontend development, creative coding, and immersive web experiences. From interactive 3D scenes to fluid micro-animations, I push the boundaries of what's possible in the browser.",
+      heading: "My Approach",
+      body: "Games are about experience. I focus on gameplay feel, visual polish, and those small details that make players smile. Whether it's a satisfying animation, a clever puzzle, or an atmospheric world — it's the little things that matter.",
     },
     {
       heading: "Skills",
       items: [
-        "React / Next.js",
-        "TypeScript",
-        "Three.js / R3F",
-        "Framer Motion",
-        "Tailwind CSS",
-        "Creative Coding",
-        "UI/UX Design",
-        "WebGL / Shaders",
+        "Unity / Unreal Engine",
+        "Godot / GameMaker",
+        "C# / C++ / GDScript",
+        "Pixel Art / 2D Design",
+        "3D Modeling (Blender)",
+        "Game Design",
+        "Level Design",
+        "Audio Design",
       ],
     },
     {
-      heading: "Approach",
-      body: "Every project starts with a question: how can this feel more human? I prototype rapidly, iterate on feel over feature, and ship experiences that make people pause and smile. The Frutiger aesthetic — clean, organic, optimistic — is my north star.",
+      heading: "Tools I Use",
+      body: "My toolkit spans engines (Unity, Unreal, Godot), languages (C#, C++, GDScript), and creative tools (Blender, Aseprite, FMOD). I pick the right tool for each project — no dogma, just results.",
     },
   ],
 } as const;
@@ -72,80 +72,75 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Aqua Flow",
+    title: "Pixel Quest",
     description:
-      "Interactive fluid simulation with real-time particle dynamics. A meditation on water, light, and motion rendered entirely in WebGL.",
-    tags: ["WebGL", "Three.js", "GLSL"],
-    image: "https://picsum.photos/seed/aquaflow/800/600",
+      "A retro-inspired 2D platformer with hand-crafted pixel art and tight controls. Explore enchanted dungeons and defeat bosses in this classic adventure.",
+    tags: ["Unity", "2D", "Platformer"],
+    image: "https://picsum.photos/seed/pixelquest/800/600",
   },
   {
     id: 2,
-    title: "Verdant",
+    title: "SkyBound",
     description:
-      "Generative art platform that grows organic patterns from algorithmic seeds. Each visit produces a unique, unrepeatable composition.",
-    tags: ["Generative Art", "Canvas", "React"],
-    image: "https://picsum.photos/seed/verdant/800/600",
+      "An open-world 3D exploration game set in a floating archipelago. Soar between islands, discover secrets, and unravel an ancient mystery.",
+    tags: ["Unreal Engine", "3D", "Open World"],
+    image: "https://picsum.photos/seed/skybound/800/600",
   },
   {
     id: 3,
-    title: "Neon Drift",
+    title: "Bubble Pop Deluxe",
     description:
-      "A synthwave-inspired music visualizer that transforms audio frequencies into luminous 3D landscapes in real time.",
-    tags: ["Web Audio", "Three.js", "Shaders"],
-    image: "https://picsum.photos/seed/neondrift/800/600",
+      "A casual mobile puzzle game with satisfying physics-based bubble mechanics. Over 200 levels of colorful, relaxing fun.",
+    tags: ["Godot", "Mobile", "Puzzle"],
+    image: "https://picsum.photos/seed/bubblepop/800/600",
   },
   {
     id: 4,
-    title: "Crystal Lattice",
+    title: "Neon Racer",
     description:
-      "Data visualization exploring crystal growth algorithms. Millions of data points rendered as refractive, light-catching structures.",
-    tags: ["D3.js", "WebGL", "Data Viz"],
-    image: "https://picsum.photos/seed/crystalline/800/600",
+      "A fast-paced arcade racer with synthwave aesthetics. Drift through neon-lit cityscapes and compete on global leaderboards.",
+    tags: ["Unity", "3D", "Racing"],
+    image: "https://picsum.photos/seed/neonracer/800/600",
   },
   {
     id: 5,
-    title: "Solaris",
+    title: "Dungeon Crawler",
     description:
-      "Atmospheric weather dashboard with animated cloud systems, dynamic sun positions, and real-time meteorological data overlays.",
-    tags: ["Next.js", "API", "Animation"],
-    image: "https://picsum.photos/seed/solaris/800/600",
+      "A roguelike dungeon crawler with procedural generation. Every run is unique — adapt, survive, and conquer the ever-changing depths.",
+    tags: ["Godot", "2D", "Roguelike"],
+    image: "https://picsum.photos/seed/dungeoncrawler/800/600",
   },
   {
     id: 6,
-    title: "Bloom",
+    title: "Starfield Explorer",
     description:
-      "Interactive botanical simulation where virtual plants grow in response to user interaction and ambient conditions.",
-    tags: ["R3F", "Procedural", "React"],
-    image: "https://picsum.photos/seed/bloomfield/800/600",
+      "A web-based space exploration game built for the browser. Navigate star systems, trade resources, and build your cosmic empire.",
+    tags: ["WebGL", "Browser", "Strategy"],
+    image: "https://picsum.photos/seed/starfield/800/600",
   },
 ];
 
 export const galleryContent = {
-  title: "Gallery",
+  title: "My Games",
   description:
-    "A curated collection of creative coding experiments, interactive installations, and design explorations.",
+    "A collection of games I've developed — from indie adventures to casual puzzles.",
 } as const;
 
 export const contactContent = {
   title: "Get in Touch",
   description:
-    "Have a project in mind, want to collaborate, or just want to say hello? I'd love to hear from you.",
-  email: "hello@kazamiyuuji.dev",
+    "Want to collaborate, have a question, or just want to say hi? Feel free to reach out!",
+  email: "hello@mochi.dev",
   social: [
     {
       platform: "GitHub",
-      url: "https://github.com/kazamiyuuji",
+      url: "https://github.com/kazamiyuuji9029",
       label: "GitHub",
     },
     {
-      platform: "Twitter",
-      url: "https://twitter.com/kazamiyuuji",
-      label: "Twitter",
-    },
-    {
-      platform: "LinkedIn",
-      url: "https://linkedin.com/in/kazamiyuuji",
-      label: "LinkedIn",
+      platform: "Email",
+      url: "mailto:hello@mochi.dev",
+      label: "Email",
     },
   ],
 } as const;
