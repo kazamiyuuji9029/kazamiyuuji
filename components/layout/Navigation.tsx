@@ -24,7 +24,7 @@ export default function Navigation() {
           href="/"
           className="text-xl font-bold gradient-primary bg-clip-text text-transparent hover:opacity-90 transition-opacity"
         >
-          Kazamiyuuji
+          Mochi
         </Link>
 
         {/* Desktop nav */}
@@ -33,7 +33,7 @@ export default function Navigation() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="text-surface/70 hover:text-surface transition-colors font-medium"
+                className="text-surface/70 hover:text-primary transition-colors font-medium"
               >
                 {link.label}
               </Link>
@@ -43,7 +43,7 @@ export default function Navigation() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden text-surface/70 hover:text-surface transition-colors"
+          className="md:hidden text-surface/70 hover:text-primary transition-colors"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle navigation menu"
           aria-expanded={isOpen}
@@ -72,7 +72,7 @@ export default function Navigation() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="block text-surface/70 hover:text-surface transition-colors font-medium py-2"
+                className="block text-surface/70 hover:text-primary transition-colors font-medium py-2"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
