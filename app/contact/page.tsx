@@ -1,126 +1,116 @@
 "use client";
 
+import React, { useState } from "react";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import GlassPanel from "@/components/glass/GlassPanel";
-import Blob from "@/components/shapes/Blob";
-import Ellipse from "@/components/shapes/Ellipse";
 import ScrollReveal from "@/components/animation/ScrollReveal";
-import HoverEffect from "@/components/animation/HoverEffect";
 import { contactContent } from "@/lib/data/portfolio";
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Frontend only — no backend
+    alert("Thanks for your message! (This is a demo — no backend connected)");
+    setFormData({ name: "", email: "", message: "" });
+  };
+
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden">
-      <Blob
-        color="rgba(46, 204, 113, 0.15)"
-        size={350}
-        className="top-24 -left-32"
-      />
-      <Ellipse
-        color="rgba(241, 196, 15, 0.08)"
-        width={500}
-        height={250}
-        className="bottom-32 -right-24"
-      />
-
       <Navigation />
 
-      <main className="flex-1 flex items-center justify-center px-6 pt-24 pb-16">
-        <div className="max-w-xl w-full space-y-6">
-          <ScrollReveal>
-            <GlassPanel variant="hero" className="p-8 md:p-12">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 gradient-primary bg-clip-text text-transparent text-center">
-                {contactContent.title}
-              </h1>
-              <p className="text-lg text-surface/70 mb-10 text-center">
-                {contactContent.description}
-              </p>
+      <main className="flex-1 px-6 pt-28 pb-16 max-w-4xl mx-auto w-full">
+        <ScrollReveal>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 gradient-primary bg-clip-text text-transparent">
+            {contactContent.title}
+          </h1>
+          <p className="text-lg text-surface/70 mb-12">
+            {contactContent.description}
+          </p>
+        </ScrollReveal>
 
-              <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Contact Form */}
+          <ScrollReveal>
+            <GlassPanel className="p-8">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-surface/60 mb-1.5"
-                  >
+                  <label htmlFor="name" className="block text-sm font-medium text-surface/70 mb-2">
                     Name
                   </label>
                   <input
-                    id="name"
                     type="text"
-                    className="w-full px-4 py-3 rounded-[var(--radius-button)] bg-white/5 border border-white/10 text-surface placeholder:text-surface/30 focus:outline-none focus:border-accent transition-colors"
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full px-4 py-3 rounded-[var(--radius-button)] bg-white/50 border border-white/80 text-surface placeholder-surface/40 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                     placeholder="Your name"
+                    required
                   />
                 </div>
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-surface/60 mb-1.5"
-                  >
+                  <label htmlFor="email" className="block text-sm font-medium text-surface/70 mb-2">
                     Email
                   </label>
                   <input
-                    id="email"
                     type="email"
-                    className="w-full px-4 py-3 rounded-[var(--radius-button)] bg-white/5 border border-white/10 text-surface placeholder:text-surface/30 focus:outline-none focus:border-accent transition-colors"
-                    placeholder="you@example.com"
+                    id="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full px-4 py-3 rounded-[var(--radius-button)] bg-white/50 border border-white/80 text-surface placeholder-surface/40 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                    placeholder="your@email.com"
+                    required
                   />
                 </div>
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-surface/60 mb-1.5"
-                  >
+                  <label htmlFor="message" className="block text-sm font-medium text-surface/70 mb-2">
                     Message
                   </label>
                   <textarea
                     id="message"
-                    rows={4}
-                    className="w-full px-4 py-3 rounded-[var(--radius-button)] bg-white/5 border border-white/10 text-surface placeholder:text-surface/30 focus:outline-none focus:border-accent transition-colors resize-none"
-                    placeholder="Tell me about your project..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="w-full px-4 py-3 rounded-[var(--radius-button)] bg-white/50 border border-white/80 text-surface placeholder-surface/40 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 min-h-[120px] resize-none"
+                    placeholder="Your message..."
+                    required
                   />
                 </div>
-                <HoverEffect scale={1.02}>
-                  <button
-                    type="submit"
-                    className="w-full py-3 gradient-primary rounded-[var(--radius-button)] text-surface font-semibold hover:shadow-[var(--shadow-glow-primary)] transition-shadow"
-                  >
-                    Send Message
-                  </button>
-                </HoverEffect>
+                <button type="submit" className="btn-primary w-full">
+                  Send Message
+                </button>
               </form>
-
-              <p className="text-center text-surface/40 text-sm mt-6">
-                Or reach out at{" "}
-                <a
-                  href={`mailto:${contactContent.email}`}
-                  className="text-accent hover:underline"
-                >
-                  {contactContent.email}
-                </a>
-              </p>
             </GlassPanel>
           </ScrollReveal>
 
-          {/* Social Links */}
-          <ScrollReveal delay={0.15}>
-            <GlassPanel className="p-6">
-              <h2 className="text-lg font-semibold text-surface/80 mb-4 text-center">
-                Find me elsewhere
-              </h2>
-              <div className="flex justify-center gap-4">
-                {contactContent.social.map((link) => (
-                  <HoverEffect key={link.platform} scale={1.08}>
-                    <a
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="glass-panel px-6 py-3 rounded-[var(--radius-button)] text-surface/70 hover:text-surface font-medium transition-colors"
-                      aria-label={link.label}
-                    >
-                      {link.platform}
-                    </a>
-                  </HoverEffect>
+          {/* Contact Info */}
+          <ScrollReveal delay={0.1}>
+            <GlassPanel className="p-8">
+              <h2 className="text-xl font-bold text-primary mb-6">Connect</h2>
+              <div className="space-y-4">
+                {contactContent.social.map((social) => (
+                  <a
+                    key={social.platform}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 p-4 rounded-[var(--radius-button)] bg-white/50 hover:bg-white/70 transition-colors group"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <span className="text-primary font-bold">
+                        {social.platform[0]}
+                      </span>
+                    </div>
+                    <div>
+                      <p className="font-medium text-surface">{social.platform}</p>
+                      <p className="text-sm text-surface/50">{social.label}</p>
+                    </div>
+                  </a>
                 ))}
               </div>
             </GlassPanel>
