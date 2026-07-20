@@ -1,7 +1,7 @@
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import GlassPanel from "@/components/glass/GlassPanel";
-import HoverEffect from "@/components/animation/HoverEffect";
+import CardHover from "@/components/gallery/CardHover";
 import ScrollReveal from "@/components/animation/ScrollReveal";
 import Wave from "@/components/shapes/Wave";
 import { galleryContent, projects } from "@/lib/data/portfolio";
@@ -30,7 +30,7 @@ export default function GalleryPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <ScrollReveal key={project.id} delay={index * 0.08}>
-              <HoverEffect scale={1.03} glow>
+              <CardHover className="shadow-[var(--shadow-glow-primary)] hover:shadow-[0_0_30px_rgba(109,179,242,0.15)] transition-shadow duration-300">
                 <GlassPanel variant="card" className="p-6 h-full flex flex-col">
                   <div className="aspect-video rounded-[var(--radius-card)] overflow-hidden mb-4 bg-white/5">
                     <img
@@ -57,7 +57,7 @@ export default function GalleryPage() {
                     ))}
                   </div>
                 </GlassPanel>
-              </HoverEffect>
+              </CardHover>
             </ScrollReveal>
           ))}
         </div>

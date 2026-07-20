@@ -1,8 +1,22 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+
+function usePrefersReducedMotion() {
+  const [prefersReduced, setPrefersReduced] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReduced(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setPrefersReduced(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  return prefersReduced;
+}
 
 interface FloatingShapeProps {
   color?: string;
@@ -18,9 +32,10 @@ export default function FloatingShape({
   speed = 0.5,
 }: FloatingShapeProps) {
   const meshRef = useRef<THREE.Mesh>(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useFrame((state) => {
-    if (!meshRef.current) return;
+    if (!meshRef.current || prefersReducedMotion) return;
     const t = state.clock.getElapsedTime() * speed;
     meshRef.current.rotation.x = Math.sin(t * 0.3) * 0.4;
     meshRef.current.rotation.y = t * 0.2;
