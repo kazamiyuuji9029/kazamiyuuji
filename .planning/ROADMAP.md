@@ -73,16 +73,20 @@ Tasks:
 
 ## Phase 4: 3D Enhancements
 **Goal:** Add Three.js/R3F hero element and 3D hover effects
-**Duration:** ~2-3 hours
+**Duration:** ~8 min
 **Requirements covered:** 3D-01, 3D-02, 3D-03
+**Plans:** 1 plan
+
+Plans:
+- [x] 01-01-PLAN.md — Three.js/R3F hero, CardHover 3D tilt, lazy-loaded, accessibility
 
 Tasks:
-1. Install Three.js and React Three Fiber
-2. Create 3D hero scene with dynamic import
-3. Ensure R3F components use next/dynamic with ssr: false
-4. Add 3D hover effects on project cards (CSS transforms)
-5. Test performance and fallbacks
-6. Final commit and verification
+1. Install Three.js and React Three Fiber ✅
+2. Create 3D hero scene with dynamic import ✅
+3. Ensure R3F components use next/dynamic with ssr: false ✅
+4. Add 3D hover effects on project cards (CSS transforms) ✅
+5. Test performance and fallbacks ✅
+6. Final commit and verification ✅
 
 **Success Criteria:** 3D hero element renders, 3D hover effects work, no SSR errors, performance acceptable.
 

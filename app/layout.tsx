@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
+import { LazyMotion, domAnimation } from "framer-motion";
 import "./globals.css";
+import SmoothScroll from "@/components/layout/SmoothScroll";
+import CustomCursor from "@/components/cursor/CustomCursor";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -21,7 +24,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${outfit.variable} antialiased`}>
       <body className="min-h-screen font-[family-name:var(--font-body)]">
-        {children}
+        <CustomCursor />
+        <SmoothScroll>
+          <LazyMotion features={domAnimation}>
+            {children}
+          </LazyMotion>
+        </SmoothScroll>
       </body>
     </html>
   );
