@@ -60,11 +60,12 @@ See: .planning/PROJECT.md (updated 2026-07-19)
 - Phase 1: `01-01-SUMMARY.md` — Execution summary with verification results
 - Phase 2: `02-01-PLAN.md` — 1 plan, Wave 1 ✅ Complete (2026-07-20)
 - Phase 2: `02-01-SUMMARY.md` — Execution summary with verification results
-- Phase 3: `03-01-PLAN.md` — 1 plan, Wave 1 (pending)
+- Phase 3: `03-01-PLAN.md` — 1 plan, Wave 1, covers HOST-01 through HOST-04, A11Y-01
+- Phase 3: `03-01-CONTEXT.md` — Phase 3 context (created 2026-07-20)
 
 ## Next Action
 
-Run `/gsd-plan-phase 3` to plan Phase 3 (Hosting, Accessibility & Polish), then `/gsd-execute-phase 3` to execute.
+Run `/gsd-execute-phase 3` to execute Phase 3 (Hosting, Accessibility & Polish).
 
 ---
 *State created: 2026-07-19*
