@@ -4,6 +4,7 @@ import { LazyMotion, domAnimation } from "framer-motion";
 import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import CustomCursor from "@/components/cursor/CustomCursor";
+import Bubbles from "@/components/bubbles/Bubbles";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -12,8 +13,8 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Kazamiyuuji | Portfolio",
-  description: "Frutiger cyber aesthetic portfolio — clean, organic, futuristic",
+  title: "Mochi | Game Developer",
+  description: "Game developer portfolio — Frutiger Aero aesthetic",
 };
 
 export default function RootLayout({
@@ -23,7 +24,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${outfit.variable} antialiased`}>
-      <body className="min-h-screen font-[family-name:var(--font-body)]">
+      <body
+        className="min-h-screen font-[family-name:var(--font-body)]"
+        style={{
+          background: "linear-gradient(135deg, #E8F4FD 0%, #B3D9F2 50%, #FFFFFF 100%)",
+        }}
+      >
+        <div className="light-rays" />
+        <Bubbles />
         <CustomCursor />
         <SmoothScroll>
           <LazyMotion features={domAnimation}>
