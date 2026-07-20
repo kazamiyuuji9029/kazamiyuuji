@@ -169,8 +169,59 @@ body {
 }
 
 .btn-glass-primary:hover {
+  background: linear-gradient(153deg, #3A8BC9, #1E8AD9);
+  box-shadow: var(--shadow-aero-lg);
+}
+
+/* ---------------------------------------------------------------
+   Primary / Secondary Button Utilities (Frutiger Aero)
+   --------------------------------------------------------------- */
+.btn-primary {
+  display: inline-block;
+  background: linear-gradient(135deg, #4A9BD9, #2E9AD9);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all var(--transition-base);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
   background: linear-gradient(135deg, #3A8BC9, #1E8AD9);
   box-shadow: var(--shadow-aero-lg);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #1A5276;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-base);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: var(--shadow-aero);
+  transform: translateY(-1px);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
 }
 
 /* ---------------------------------------------------------------
