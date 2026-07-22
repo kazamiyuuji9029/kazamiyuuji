@@ -30,7 +30,7 @@ export default function FloatingShape({
   return (
     <Float speed={speed} rotationIntensity={0.5} floatIntensity={1}>
       <mesh ref={meshRef}>
-        <sphereGeometry args={[size, 64, 64]} />
+        <sphereGeometry args={[size, 128, 128]} />
         <MeshDistortMaterial
           color={color}
           roughness={0.2}

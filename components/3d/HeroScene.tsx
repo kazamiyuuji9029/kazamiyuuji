@@ -45,6 +45,12 @@ export default function HeroScene() {
     <div className="absolute inset-0 z-0">
       <Canvas
         camera={{ position: [0, 0, 6], fov: 45 }}
+        dpr={[1, 2]}
+        gl={{
+          antialias: true,
+          alpha: true,
+          powerPreference: "high-performance",
+        }}
         style={{ pointerEvents: "none" }}
       >
         <Suspense fallback={null}>
