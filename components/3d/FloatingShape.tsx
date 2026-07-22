@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useRef, useMemo } from "react";
-import { useFrame } from "@react-three/fiber";
-import { Float } from "@react-three/drei";
+import React, { useRef, useMemo, useCallback } from "react";
+import { useFrame, type ThreeEvent } from "@react-three/fiber";
 import * as THREE from "three";
 
 interface FloatingShapeProps {
@@ -16,55 +15,73 @@ export default function FloatingShape({
 }: FloatingShapeProps) {
   const meshRef = useRef<THREE.Mesh>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
+  const targetRef = useRef({ x: 0, y: 0 });
 
+  // Icosahedron — facets make rotation clearly visible
   const geometry = useMemo(() => {
-    return new THREE.SphereGeometry(size, 256, 256);
+    return new THREE.IcosahedronGeometry(size, 1);
   }, [size]);
+
+  const material = useMemo(() => {
+    return new THREE.MeshStandardMaterial({
+      color,
+      roughness: 0.2,
+      metalness: 0.85,
+      flatShading: true,
+    });
+  }, [color]);
+
+  const onPointerMove = useCallback((e: ThreeEvent<PointerEvent>) => {
+    e.stopPropagation();
+    targetRef.current.x = e.point.x * 1.0;
+    targetRef.current.y = e.point.y * 1.0;
+    mouseRef.current.x = 1;
+  }, []);
+
+  const onPointerLeave = useCallback(() => {
+    targetRef.current.x = 0;
+    targetRef.current.y = 0;
+    mouseRef.current.x = 0;
+  }, []);
 
   useFrame((state) => {
     if (!meshRef.current) return;
 
     const { clock } = state;
     const mesh = meshRef.current;
+    const t = clock.elapsedTime;
 
-    // Smooth rotation
-    mesh.rotation.x = Math.sin(clock.elapsedTime * 0.5) * 0.2;
-    mesh.rotation.y += 0.005;
+    // Continuous rotation — clearly visible on icosahedron
+    mesh.rotation.x = Math.sin(t * 0.5) * 0.4;
+    mesh.rotation.y += 0.01;
+    mesh.rotation.z = Math.cos(t * 0.3) * 0.2;
 
-    // Interactive: move toward mouse position with smooth lerp
-    const targetX = mouseRef.current.x * 0.5;
-    const targetY = mouseRef.current.y * 0.5;
-    mesh.position.x += (targetX - mesh.position.x) * 0.05;
-    mesh.position.y += (targetY - mesh.position.y) * 0.05;
+    // Floating bob
+    mesh.position.y = Math.sin(t * 0.8) * 0.15;
 
-    // Slight scale pulse when mouse moves
-    const speed = Math.abs(mouseRef.current.x) + Math.abs(mouseRef.current.y);
-    const scale = 1 + speed * 0.05;
-    mesh.scale.lerp(new THREE.Vector3(scale, scale, scale), 0.1);
+    // Mouse follow — smooth lerp toward target
+    const tx = targetRef.current.x;
+    const ty = targetRef.current.y;
+    mesh.position.x += (tx - mesh.position.x) * 0.03;
+    // Only apply vertical mouse offset on top of the float
+    const currentFloatY = Math.sin(t * 0.8) * 0.15;
+    const desiredY = currentFloatY + ty * 0.3;
+    mesh.position.y += (desiredY - mesh.position.y) * 0.03;
+
+    // Scale pulse when mouse is over
+    const isActive = mouseRef.current.x > 0;
+    const targetScale = isActive ? 1.12 : 1.0;
+    const s = mesh.scale.x + (targetScale - mesh.scale.x) * 0.05;
+    mesh.scale.set(s, s, s);
   });
 
   return (
-    <Float speed={1.5} rotationIntensity={0.3} floatIntensity={0.5}>
-      <mesh
-        ref={meshRef}
-        geometry={geometry}
-        onPointerMove={(e) => {
-          // Get mouse position relative to center (-1 to 1)
-          mouseRef.current.x = e.point.x * 0.3;
-          mouseRef.current.y = e.point.y * 0.3;
-        }}
-        onPointerLeave={() => {
-          // Return to center when mouse leaves
-          mouseRef.current.x = 0;
-          mouseRef.current.y = 0;
-        }}
-      >
-        <meshStandardMaterial
-          color={color}
-          roughness={0.3}
-          metalness={0.9}
-        />
-      </mesh>
-    </Float>
+    <mesh
+      ref={meshRef}
+      geometry={geometry}
+      material={material}
+      onPointerMove={onPointerMove}
+      onPointerLeave={onPointerLeave}
+    />
   );
 }
