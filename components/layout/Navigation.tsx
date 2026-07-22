@@ -47,7 +47,7 @@ export default function Navigation() {
           href="/"
           className="text-xl font-bold gradient-primary bg-clip-text text-transparent hover:opacity-90 transition-opacity"
         >
-          Mochi
+          Kazami Yuuji
         </Link>
 
         {/* Desktop nav */}
