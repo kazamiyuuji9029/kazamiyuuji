@@ -1,12 +1,12 @@
 /**
  * Portfolio content data
- * Centralized content for all pages — Mochi, Game Developer
+ * Kazami Yuuji — The Fruit of Grisaia
  */
 
 export const siteMetadata = {
-  title: "Mochi | Game Developer",
-  description: "Game developer portfolio — Frutiger Aero aesthetic",
-  author: "Mochi",
+  title: "Kazami Yuuji | Portfolio",
+  description: "Kazami Yuuji — protagonist of The Fruit of Grisaia",
+  author: "Kazami Yuuji",
 };
 
 export const navigationLinks = [
@@ -17,10 +17,10 @@ export const navigationLinks = [
 ] as const;
 
 export const heroContent = {
-  name: "Mochi",
-  tagline: "Crafting Worlds, One Pixel at a Time",
+  name: "Kazami Yuuji",
+  tagline: "The Man with the Deadliest Skillset",
   subtitle:
-    "Game developer passionate about creating immersive experiences — from indie 2D adventures to 3D worlds.",
+    "Former child soldier, government operative, and Mihama Academy's most dangerous student. I don't talk much — my work speaks for itself.",
   cta: {
     primary: { label: "View My Work", href: "/gallery" },
     secondary: { label: "Contact Me", href: "/contact" },
@@ -30,32 +30,32 @@ export const heroContent = {
 export const aboutContent = {
   title: "About Me",
   description:
-    "Hi, I'm Mochi — a game developer who loves bringing ideas to life through code and creativity.",
+    "I'm Kazami Yuuji. Former assassin turned student. That's all you need to know.",
   sections: [
     {
-      heading: "What I Do",
-      body: "I create games across all platforms — 2D indie titles, 3D adventures, web-based casual games, and everything in between. Every project is a new opportunity to push boundaries and create something memorable.",
+      heading: "Who I Am",
+      body: "My name is Kazami Yuuji. I was raised by my sister Kazuki — the greatest magician the world has ever seen — and trained to be a weapon. By age 15, I had already completed black ops missions that would break most adults. Now I'm a student at Mihama Academy, trying to live something resembling a normal life. It's not going well.",
     },
     {
-      heading: "My Approach",
-      body: "Games are about experience. I focus on gameplay feel, visual polish, and those small details that make players smile. Whether it's a satisfying animation, a clever puzzle, or an atmospheric world — it's the little things that matter.",
+      heading: "What I Do",
+      body: "Combat. Infiltration. Assassination. Languages. Hacking. You name it, I've done it professionally. But here at Mihama, I'm supposed to be learning how to be a regular high school student. The girls here have their own trauma, and somehow I keep getting dragged into their problems. Being a 'big brother' wasn't in the mission briefing.",
     },
     {
       heading: "Skills",
       items: [
-        "Unity / Unreal Engine",
-        "Godot / GameMaker",
-        "C# / C++ / GDScript",
-        "Pixel Art / 2D Design",
-        "3D Modeling (Blender)",
-        "Game Design",
-        "Level Design",
-        "Audio Design",
+        "Close Quarters Combat",
+        "Marksman (All Weapons)",
+        "Infiltration & Espionage",
+        "Multilingual (JP, EN, RU, CN)",
+        "Explosives & Demolitions",
+        "Hand-to-Hand Combat",
+        "Tactical Planning",
+        "Cooking (Secret Talent)",
       ],
     },
     {
-      heading: "Tools I Use",
-      body: "My toolkit spans engines (Unity, Unreal, Godot), languages (C#, C++, GDScript), and creative tools (Blender, Aseprite, FMOD). I pick the right tool for each project — no dogma, just results.",
+      heading: "My Philosophy",
+      body: "The world isn't black and white — it's grey. I've done terrible things for good reasons, and good things by accident. All I can do now is protect the people I care about at Mihama. Kazuki left them in my care, and I don't break promises.",
     },
   ],
 } as const;
@@ -72,65 +72,65 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Pixel Quest",
+    title: "Kazami Yuuji",
     description:
-      "A retro-inspired 2D platformer with hand-crafted pixel art and tight controls. Explore enchanted dungeons and defeat bosses in this classic adventure.",
-    tags: ["Unity", "2D", "Platformer"],
-    image: "https://picsum.photos/seed/pixelquest/800/600",
+      "The protagonist. A former child soldier with a lethal skillset, now navigating life at Mihama Academy.",
+    tags: ["Protagonist", "Combat", "Mihama"],
+    image: "https://cdn.myanimelist.net/images/characters/2/296665.jpg",
   },
   {
     id: 2,
-    title: "SkyBound",
+    title: "Amane Suou",
     description:
-      "An open-world 3D exploration game set in a floating archipelago. Soar between islands, discover secrets, and unravel an ancient mystery.",
-    tags: ["Unreal Engine", "3D", "Open World"],
-    image: "https://picsum.photos/seed/skybound/800/600",
+      "The eldest of the Mihama girls. Seems promiscuous on the surface but carries deep trauma and genuine care for others.",
+    tags: ["Onee-san", "Caring", "Complex"],
+    image: "https://cdn.myanimelist.net/images/characters/11/296671.jpg",
   },
   {
     id: 3,
-    title: "Bubble Pop Deluxe",
+    title: "Makina Irisu",
     description:
-      "A casual mobile puzzle game with satisfying physics-based bubble mechanics. Over 200 levels of colorful, relaxing fun.",
-    tags: ["Godot", "Mobile", "Puzzle"],
-    image: "https://picsum.photos/seed/bubblepop/800/600",
+      "Childish and innocent on the outside, but comes from a twisted wealthy family. Surprisingly good at sharpshooting.",
+    tags: ["Genki", "Shooter", "Irisu"],
+    image: "https://cdn.myanimelist.net/images/characters/3/296669.jpg",
   },
   {
     id: 4,
-    title: "Neon Racer",
+    title: "Sachi Komine",
     description:
-      "A fast-paced arcade racer with synthwave aesthetics. Drift through neon-lit cityscapes and compete on global leaderboards.",
-    tags: ["Unity", "3D", "Racing"],
-    image: "https://picsum.photos/seed/neonracer/800/600",
+      "The maid of Mihama. Suppresses her own desires to serve others. Will do anything requested of her — no matter how dangerous.",
+    tags: ["Maid", "Obedient", "Tragic"],
+    image: "https://cdn.myanimelist.net/images/characters/9/296667.jpg",
   },
   {
     id: 5,
-    title: "Dungeon Crawler",
+    title: "Michiru Matsushima",
     description:
-      "A roguelike dungeon crawler with procedural generation. Every run is unique — adapt, survive, and conquer the ever-changing depths.",
-    tags: ["Godot", "2D", "Roguelike"],
-    image: "https://picsum.photos/seed/dungeoncrawler/800/600",
+      "Self-proclaimed tsundere with a split personality. Talks big but hides real pain behind her blonde hair and energy.",
+    tags: ["Tsundere", "Blonde", "Two-faced"],
+    image: "https://cdn.myanimelist.net/images/characters/8/296673.jpg",
   },
   {
     id: 6,
-    title: "Starfield Explorer",
+    title: "Yumiko Sakaki",
     description:
-      "A web-based space exploration game built for the browser. Navigate star systems, trade resources, and build your cosmic empire.",
-    tags: ["WebGL", "Browser", "Strategy"],
-    image: "https://picsum.photos/seed/starfield/800/600",
+      "The sharp-tongued daughter of a CEO. Initially hostile toward Yuuji but slowly opens up. Wields a box cutter with deadly precision.",
+    tags: ["Tsundere", "Box Cutter", "Sakaki"],
+    image: "https://cdn.myanimelist.net/images/characters/6/296675.jpg",
   },
 ];
 
 export const galleryContent = {
-  title: "My Games",
+  title: "The Fruit of Grisaia",
   description:
-    "A collection of games I've developed — from indie adventures to casual puzzles.",
+    "The cast of Mihama Academy — broken people finding purpose in each other.",
 } as const;
 
 export const contactContent = {
   title: "Get in Touch",
   description:
-    "Want to collaborate, have a question, or just want to say hi? Feel free to reach out!",
-  email: "hello@mochi.dev",
+    "If you have a job, keep it to yourself. I'm done with that life. But if you need me... I'll be at Mihama.",
+  email: "yuuji@mihama.edu",
   social: [
     {
       platform: "GitHub",
@@ -139,7 +139,7 @@ export const contactContent = {
     },
     {
       platform: "Email",
-      url: "mailto:hello@mochi.dev",
+      url: "mailto:yuuji@mihama.edu",
       label: "Email",
     },
   ],
