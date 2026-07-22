@@ -13,10 +13,8 @@ function HeroSceneContent() {
       <pointLight position={[-10, -10, -5]} intensity={0.5} color="#87CEEB" />
 
       <FloatingShape
-        color="#4A9BD9"
+        color="#1A365D"
         size={1.8}
-        distort={0.4}
-        speed={1.5}
       />
 
       <ContactShadows
@@ -53,7 +51,7 @@ export default function HeroScene() {
           stencil: false,
           depth: true,
         }}
-        style={{ pointerEvents: "none" }}
+        style={{ pointerEvents: "auto" }}
       >
         <Suspense fallback={null}>
           <HeroSceneContent />
