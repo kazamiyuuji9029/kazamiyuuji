@@ -50,6 +50,8 @@ export default function HeroScene() {
           antialias: true,
           alpha: true,
           powerPreference: "high-performance",
+          stencil: false,
+          depth: true,
         }}
         style={{ pointerEvents: "none" }}
       >
