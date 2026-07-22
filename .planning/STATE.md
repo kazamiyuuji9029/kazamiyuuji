@@ -37,7 +37,7 @@ See: .planning/PROJECT.md (updated 2026-07-19)
 - Design: Frutiger Aero/Cyber aesthetic
 - Pages: Home, About, Gallery, Contact (4 pages)
 - 3D: Included as Phase 4
-- **Live URL:** https://goat-six-bay.vercel.app
+- **Live URL:** https://goat-f352jqd1a-kazamiyuuji.vercel.app
 - 3D HeroScene uses Client Component wrapper (HeroSceneLoader) for ssr:false compliance
 - Gallery uses CardHover (CSS perspective tilt) instead of HoverEffect (simple scale)
 
