@@ -14,8 +14,8 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Mochi | Game Developer",
-  description: "Game developer portfolio — Frutiger Aero aesthetic",
+  title: "Kazami Yuuji | The Fruit of Grisaia",
+  description: "Kazami Yuuji — protagonist of The Fruit of Grisaia. Mihama Academy's most dangerous student.",
 };
 
 export default function RootLayout({
