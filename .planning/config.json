@@ -1,9 +1,0 @@
-{
-  "granularity": "fine",
-  "parallelism": "standard",
-  "testing": "minimal",
-  "auto_proceed": false,
-  "research_mode": true,
-  "workflow": "new-project",
-  "created": "2026-07-19"
-}
