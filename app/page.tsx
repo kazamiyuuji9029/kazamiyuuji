@@ -13,7 +13,8 @@ export default function Home() {
 
       <Navigation />
 
-      <main className="flex-1 flex items-center justify-center px-6 pt-24 relative z-10">
+      {/* Skip link target — WCAG 2.4.1 */}
+      <main id="main-content" className="flex-1 flex items-center justify-center px-6 pt-24 relative z-10">
         <ScrollReveal className="w-full">
           <GlassPanel variant="hero" className="max-w-3xl text-center p-12">
             <h1 className="text-5xl md:text-7xl font-bold mb-4 gradient-primary bg-clip-text text-transparent">

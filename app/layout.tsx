@@ -5,6 +5,7 @@ import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import CustomCursor from "@/components/cursor/CustomCursor";
 import Bubbles from "@/components/bubbles/Bubbles";
+import SkipLink from "@/components/accessibility/SkipLink";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -30,7 +31,10 @@ export default function RootLayout({
           background: "linear-gradient(135deg, #E8F4FD 0%, #B3D9F2 50%, #FFFFFF 100%)",
         }}
       >
-        <div className="light-rays" />
+        {/* Skip link for keyboard users — WCAG 2.4.1 */}
+        <SkipLink />
+
+        <div className="light-rays" aria-hidden="true" />
         <Bubbles />
         <CustomCursor />
         <SmoothScroll>

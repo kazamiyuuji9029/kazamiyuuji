@@ -9,7 +9,8 @@ export default function AboutPage() {
     <div className="min-h-screen flex flex-col relative overflow-hidden">
       <Navigation />
 
-      <main className="flex-1 px-6 pt-28 pb-16 max-w-4xl mx-auto w-full">
+      {/* Skip link target — WCAG 2.4.1 */}
+      <main id="main-content" className="flex-1 px-6 pt-28 pb-16 max-w-4xl mx-auto w-full">
         <ScrollReveal>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 gradient-primary bg-clip-text text-transparent">
             {aboutContent.title}
@@ -31,10 +32,11 @@ export default function AboutPage() {
                     {section.body}
                   </p>
                 ) : (
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-3" role="list" aria-label={`${section.heading} list`}>
                     {section.items.map((item) => (
                       <span
                         key={item}
+                        role="listitem"
                         className="px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm"
                       >
                         {item}

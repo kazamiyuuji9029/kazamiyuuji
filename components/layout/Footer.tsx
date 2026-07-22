@@ -4,7 +4,7 @@ import { siteMetadata } from "@/lib/data/portfolio";
 export default function Footer() {
   return (
     <footer className="py-8 px-6 text-center">
-      <p className="text-sm text-surface/50">
+      <p className="text-sm text-surface/70">
         &copy; {new Date().getFullYear()} {siteMetadata.author}. All rights reserved.
       </p>
     </footer>

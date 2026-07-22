@@ -21,5 +21,13 @@ const HeroScene = dynamic(() => import("./HeroScene"), {
 });
 
 export default function HeroSceneLoader() {
-  return <HeroScene />;
+  return (
+    <>
+      {/* Screen reader description for 3D scene — WCAG 1.1.1 (Non-text Content) */}
+      <span className="sr-only">
+        Interactive 3D scene with floating geometric shapes in blue and green colors
+      </span>
+      <HeroScene aria-hidden="true" />
+    </>
+  );
 }
