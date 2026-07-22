@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { type ReactNode } from "react";
 
 const HeroScene = dynamic(() => import("./HeroScene"), {
   ssr: false,
@@ -20,14 +21,16 @@ const HeroScene = dynamic(() => import("./HeroScene"), {
   ),
 });
 
-export default function HeroSceneLoader() {
+export default function HeroSceneLoader({ children }: { children?: ReactNode }) {
   return (
     <>
-      {/* Screen reader description for 3D scene — WCAG 1.1.1 (Non-text Content) */}
+      {/* Screen reader description for 3D scene — WCAG 1.1.1 */}
       <span className="sr-only">
         Interactive 3D scene with floating geometric shapes in blue and green colors
       </span>
-      <HeroScene aria-hidden="true" />
+      <HeroScene aria-hidden="true">
+        {children}
+      </HeroScene>
     </>
   );
 }

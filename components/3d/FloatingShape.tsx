@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useRef, useMemo, useCallback } from "react";
-import { useFrame, type ThreeEvent } from "@react-three/fiber";
+import React, { useRef, useMemo } from "react";
+import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { useGlobalMouse } from "./HeroScene";
 
 interface FloatingShapeProps {
   color?: string;
@@ -14,8 +15,7 @@ export default function FloatingShape({
   size = 1.8,
 }: FloatingShapeProps) {
   const meshRef = useRef<THREE.Mesh>(null);
-  const mouseRef = useRef({ x: 0, y: 0 });
-  const targetRef = useRef({ x: 0, y: 0 });
+  const mouse = useGlobalMouse();
 
   // Icosahedron — facets make rotation clearly visible
   const geometry = useMemo(() => {
@@ -31,19 +31,6 @@ export default function FloatingShape({
     });
   }, [color]);
 
-  const onPointerMove = useCallback((e: ThreeEvent<PointerEvent>) => {
-    e.stopPropagation();
-    targetRef.current.x = e.point.x * 1.0;
-    targetRef.current.y = e.point.y * 1.0;
-    mouseRef.current.x = 1;
-  }, []);
-
-  const onPointerLeave = useCallback(() => {
-    targetRef.current.x = 0;
-    targetRef.current.y = 0;
-    mouseRef.current.x = 0;
-  }, []);
-
   useFrame((state) => {
     if (!meshRef.current) return;
 
@@ -57,21 +44,18 @@ export default function FloatingShape({
     mesh.rotation.z = Math.cos(t * 0.3) * 0.2;
 
     // Floating bob
-    mesh.position.y = Math.sin(t * 0.8) * 0.15;
+    const floatY = Math.sin(t * 0.8) * 0.15;
 
-    // Mouse follow — smooth lerp toward target
-    const tx = targetRef.current.x;
-    const ty = targetRef.current.y;
-    mesh.position.x += (tx - mesh.position.x) * 0.03;
-    // Only apply vertical mouse offset on top of the float
-    const currentFloatY = Math.sin(t * 0.8) * 0.15;
-    const desiredY = currentFloatY + ty * 0.3;
-    mesh.position.y += (desiredY - mesh.position.y) * 0.03;
+    // Mouse follow — shape moves toward cursor globally
+    const targetX = mouse.x * 1.2;
+    const targetY = floatY + mouse.y * 0.6;
+    mesh.position.x += (targetX - mesh.position.x) * 0.025;
+    mesh.position.y += (targetY - mesh.position.y) * 0.025;
 
-    // Scale pulse when mouse is over
-    const isActive = mouseRef.current.x > 0;
-    const targetScale = isActive ? 1.12 : 1.0;
-    const s = mesh.scale.x + (targetScale - mesh.scale.x) * 0.05;
+    // Scale pulse based on mouse activity
+    const dist = Math.sqrt(mouse.x * mouse.x + mouse.y * mouse.y);
+    const targetScale = 1 + dist * 0.1;
+    const s = mesh.scale.x + (targetScale - mesh.scale.x) * 0.04;
     mesh.scale.set(s, s, s);
   });
 
@@ -80,8 +64,6 @@ export default function FloatingShape({
       ref={meshRef}
       geometry={geometry}
       material={material}
-      onPointerMove={onPointerMove}
-      onPointerLeave={onPointerLeave}
     />
   );
 }

@@ -1,9 +1,21 @@
 "use client";
 
-import React, { Suspense } from "react";
+import React, { Suspense, createContext, useContext, useState, useEffect, type ReactNode } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment, ContactShadows } from "@react-three/drei";
 import FloatingShape from "./FloatingShape";
+
+// Global mouse context — tracks cursor across the whole viewport
+interface MouseCtx {
+  x: number;
+  y: number;
+}
+
+const MouseContext = createContext<MouseCtx>({ x: 0, y: 0 });
+
+export function useGlobalMouse() {
+  return useContext(MouseContext);
+}
 
 function HeroSceneContent() {
   return (
@@ -30,39 +42,42 @@ function HeroSceneContent() {
   );
 }
 
-function Fallback() {
-  return (
-    <div className="w-full h-full flex items-center justify-center">
-      <div className="w-16 h-16 rounded-full bg-primary/20 animate-pulse" />
-    </div>
-  );
-}
+export default function HeroScene({ children }: { children?: ReactNode }) {
+  const [mouse, setMouse] = useState<MouseCtx>({ x: 0, y: 0 });
 
-export default function HeroScene() {
+  useEffect(() => {
+    const handleMove = (e: MouseEvent) => {
+      // Normalize to -1..1 range centered on viewport
+      const x = (e.clientX / window.innerWidth) * 2 - 1;
+      const y = -(e.clientY / window.innerHeight) * 2 + 1;
+      setMouse({ x, y });
+    };
+    window.addEventListener("mousemove", handleMove, { passive: true });
+    return () => window.removeEventListener("mousemove", handleMove);
+  }, []);
+
   return (
-    <div
-      className="absolute inset-0 z-0"
-      style={{ pointerEvents: "auto" }}
-    >
-      <Canvas
-        camera={{ position: [0, 0, 6], fov: 45 }}
-        dpr={[1, 2]}
-        gl={{
-          antialias: true,
-          alpha: true,
-          powerPreference: "high-performance",
-          stencil: false,
-          depth: true,
-        }}
-        style={{ width: "100%", height: "100%", pointerEvents: "auto" }}
-        onCreated={({ gl }) => {
-          gl.domElement.style.pointerEvents = "auto";
-        }}
-      >
-        <Suspense fallback={null}>
-          <HeroSceneContent />
-        </Suspense>
-      </Canvas>
-    </div>
+    <MouseContext.Provider value={mouse}>
+      <div className="absolute inset-0 z-0">
+        <Canvas
+          camera={{ position: [0, 0, 6], fov: 45 }}
+          dpr={[1, 2]}
+          gl={{
+            antialias: true,
+            alpha: true,
+            powerPreference: "high-performance",
+            stencil: false,
+            depth: true,
+          }}
+          // Canvas does NOT block page interactions
+          style={{ width: "100%", height: "100%", pointerEvents: "none" }}
+        >
+          <Suspense fallback={null}>
+            <HeroSceneContent />
+          </Suspense>
+        </Canvas>
+      </div>
+      {children}
+    </MouseContext.Provider>
   );
 }

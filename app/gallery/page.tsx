@@ -19,32 +19,32 @@ interface AnimeImage {
 const animeThemes: { title: string; description: string; tags: string[] }[] = [
   {
     title: "Spirit Blossom",
-    description: "A serene moment where spirits dance among cherry blossoms under the moonlight.",
+    description: "The goated cherry blossom scene. Spirits hitting different at midnight.",
     tags: ["Fantasy", "Atmospheric", "Spirit"],
   },
   {
     title: "Neon Samurai",
-    description: "A lone warrior walks through the neon-lit streets of a cyberpunk Tokyo.",
+    description: "This man is literally him. Neon Tokyo never looked this clean.",
     tags: ["Cyberpunk", "Action", "Neon"],
   },
   {
     title: "Starlight Journey",
-    description: "Two travelers follow a path of falling stars across an endless sky.",
+    description: "Two mains on a side quest through the stars. Absolute cinema.",
     tags: ["Adventure", "Stars", "Journey"],
   },
   {
     title: "Crimson Blade",
-    description: "A swordsman channels ancient power through a blade forged in dragon fire.",
+    description: "Dragon fire sword goes crazy. Peak fiction honestly.",
     tags: ["Fantasy", "Combat", "Power"],
   },
   {
     title: "Mystic Library",
-    description: "An ancient library holds forbidden knowledge between walls of floating books.",
+    description: "Forbidden knowledge speedrun any%. Books floating = aura.",
     tags: ["Mystery", "Magic", "Knowledge"],
   },
   {
     title: "Ocean Phantom",
-    description: "A mysterious figure emerges from the deep ocean, trailing bioluminescent light.",
+    description: "Bioluminescent drip is unmatched. Ocean boss energy.",
     tags: ["Supernatural", "Ocean", "Ethereal"],
   },
 ];
