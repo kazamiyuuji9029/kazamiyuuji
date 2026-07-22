@@ -76,7 +76,7 @@ export const projects: Project[] = [
     description:
       "The protagonist. A former child soldier with a lethal skillset, now navigating life at Mihama Academy.",
     tags: ["Protagonist", "Combat", "Mihama"],
-    image: "https://cdn.myanimelist.net/images/characters/2/296665.jpg",
+    image: "https://s4.anilist.co/file/anilistcdn/character/large/n80891-WesKQmQEVJ5n.jpg",
   },
   {
     id: 2,
@@ -84,7 +84,7 @@ export const projects: Project[] = [
     description:
       "The eldest of the Mihama girls. Seems promiscuous on the surface but carries deep trauma and genuine care for others.",
     tags: ["Onee-san", "Caring", "Complex"],
-    image: "https://cdn.myanimelist.net/images/characters/11/296671.jpg",
+    image: "https://s4.anilist.co/file/anilistcdn/character/large/b80899-TzrealvmrLxH.png",
   },
   {
     id: 3,
@@ -92,7 +92,7 @@ export const projects: Project[] = [
     description:
       "Childish and innocent on the outside, but comes from a twisted wealthy family. Surprisingly good at sharpshooting.",
     tags: ["Genki", "Shooter", "Irisu"],
-    image: "https://cdn.myanimelist.net/images/characters/3/296669.jpg",
+    image: "https://s4.anilist.co/file/anilistcdn/character/large/n80893-qYexb8DbTG0E.jpg",
   },
   {
     id: 4,
@@ -100,7 +100,7 @@ export const projects: Project[] = [
     description:
       "The maid of Mihama. Suppresses her own desires to serve others. Will do anything requested of her — no matter how dangerous.",
     tags: ["Maid", "Obedient", "Tragic"],
-    image: "https://cdn.myanimelist.net/images/characters/9/296667.jpg",
+    image: "https://s4.anilist.co/file/anilistcdn/character/large/b80895-ER8FPmnwhR1h.png",
   },
   {
     id: 5,
@@ -108,7 +108,7 @@ export const projects: Project[] = [
     description:
       "Self-proclaimed tsundere with a split personality. Talks big but hides real pain behind her blonde hair and energy.",
     tags: ["Tsundere", "Blonde", "Two-faced"],
-    image: "https://cdn.myanimelist.net/images/characters/8/296673.jpg",
+    image: "https://s4.anilist.co/file/anilistcdn/character/large/n80897-psxA0eW0jAsb.jpg",
   },
   {
     id: 6,
@@ -116,7 +116,7 @@ export const projects: Project[] = [
     description:
       "The sharp-tongued daughter of a CEO. Initially hostile toward Yuuji but slowly opens up. Wields a box cutter with deadly precision.",
     tags: ["Tsundere", "Box Cutter", "Sakaki"],
-    image: "https://cdn.myanimelist.net/images/characters/6/296675.jpg",
+    image: "https://s4.anilist.co/file/anilistcdn/character/large/b80257-pelmvGBeCiNm.png",
   },
 ];
 
