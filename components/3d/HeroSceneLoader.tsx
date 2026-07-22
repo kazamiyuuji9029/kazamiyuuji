@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { type ReactNode } from "react";
+import { Component, type ReactNode } from "react";
 
 const HeroScene = dynamic(() => import("./HeroScene"), {
   ssr: false,
@@ -21,6 +21,20 @@ const HeroScene = dynamic(() => import("./HeroScene"), {
   ),
 });
 
+class SceneErrorBoundary extends Component<
+  { children: ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false };
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  render() {
+    if (this.state.hasError) return null;
+    return this.props.children;
+  }
+}
+
 export default function HeroSceneLoader({ children }: { children?: ReactNode }) {
   return (
     <>
@@ -28,9 +42,14 @@ export default function HeroSceneLoader({ children }: { children?: ReactNode }) 
       <span className="sr-only">
         Interactive 3D scene with floating geometric shapes in blue and green colors
       </span>
-      <HeroScene aria-hidden="true">
-        {children}
-      </HeroScene>
+      {/* 3D scene — wrapped in error boundary so a Three.js failure doesn't kill the page */}
+      <SceneErrorBoundary>
+        <div className="absolute inset-0 z-0" aria-hidden="true">
+          <HeroScene />
+        </div>
+      </SceneErrorBoundary>
+      {/* Page content — always renders regardless of 3D scene status */}
+      {children}
     </>
   );
 }

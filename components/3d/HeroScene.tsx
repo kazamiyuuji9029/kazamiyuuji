@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, createContext, useContext, useState, useEffect, type ReactNode } from "react";
+import React, { Suspense, createContext, useContext, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment, ContactShadows } from "@react-three/drei";
 import FloatingShape from "./FloatingShape";
@@ -42,7 +42,7 @@ function HeroSceneContent() {
   );
 }
 
-export default function HeroScene({ children }: { children?: ReactNode }) {
+export default function HeroScene() {
   const [mouse, setMouse] = useState<MouseCtx>({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -58,26 +58,23 @@ export default function HeroScene({ children }: { children?: ReactNode }) {
 
   return (
     <MouseContext.Provider value={mouse}>
-      <div className="absolute inset-0 z-0">
-        <Canvas
-          camera={{ position: [0, 0, 6], fov: 45 }}
-          dpr={[1, 2]}
-          gl={{
-            antialias: true,
-            alpha: true,
-            powerPreference: "high-performance",
-            stencil: false,
-            depth: true,
-          }}
-          // Canvas does NOT block page interactions
-          style={{ width: "100%", height: "100%", pointerEvents: "none" }}
-        >
-          <Suspense fallback={null}>
-            <HeroSceneContent />
-          </Suspense>
-        </Canvas>
-      </div>
-      {children}
+      <Canvas
+        camera={{ position: [0, 0, 6], fov: 45 }}
+        dpr={[1, 2]}
+        gl={{
+          antialias: true,
+          alpha: true,
+          powerPreference: "high-performance",
+          stencil: false,
+          depth: true,
+        }}
+        // Canvas does NOT block page interactions
+        style={{ width: "100%", height: "100%", pointerEvents: "none" }}
+      >
+        <Suspense fallback={null}>
+          <HeroSceneContent />
+        </Suspense>
+      </Canvas>
     </MouseContext.Provider>
   );
 }

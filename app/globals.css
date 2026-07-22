@@ -393,3 +393,18 @@ select:focus-visible {
   white-space: nowrap;
   border: 0;
 }
+
+/* ---------------------------------------------------------------
+   Safety fallback — ensure content is visible even if JS fails
+   framer-motion should override this via inline styles
+   --------------------------------------------------------------- */
+@keyframes reveal-content {
+  to {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+div[style*="opacity:0"] {
+  animation: reveal-content 0.01s 2s forwards;
+}
