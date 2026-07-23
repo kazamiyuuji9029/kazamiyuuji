@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import GlassPanel from "@/components/glass/GlassPanel";
@@ -26,18 +27,18 @@ export default function Home() {
                 {heroContent.subtitle}
               </p>
               <div className="flex gap-4 justify-center">
-                <a
+                <Link
                   href={heroContent.cta.primary.href}
                   className="btn-primary"
                 >
                   {heroContent.cta.primary.label}
-                </a>
-                <a
+                </Link>
+                <Link
                   href={heroContent.cta.secondary.href}
                   className="btn-secondary"
                 >
                   {heroContent.cta.secondary.label}
-                </a>
+                </Link>
               </div>
             </GlassPanel>
           </ScrollReveal>

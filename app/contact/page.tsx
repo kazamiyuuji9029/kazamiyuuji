@@ -7,18 +7,41 @@ import GlassPanel from "@/components/glass/GlassPanel";
 import ScrollReveal from "@/components/animation/ScrollReveal";
 import { contactContent } from "@/lib/data/portfolio";
 
+// Replace with your Formspree form ID from https://formspree.io
+const FORMSPREE_FORM_ID = "YOUR_FORM_ID_HERE";
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Frontend only — no backend
-    alert("Thanks for your message! (This is a demo — no backend connected)");
-    setFormData({ name: "", email: "", message: "" });
+    setStatus("sending");
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_FORM_ID}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+
+      if (res.ok) {
+        setStatus("sent");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -40,55 +63,75 @@ export default function ContactPage() {
           {/* Contact Form */}
           <ScrollReveal>
             <GlassPanel className="p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-surface/70 mb-2">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-[var(--radius-button)] bg-white/50 border border-white/80 text-surface placeholder-surface/60 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
-                    placeholder="Your name"
-                    required
-                    aria-required="true"
-                  />
+              {status === "sent" ? (
+                <div className="text-center py-12">
+                  <p className="text-xl font-semibold text-primary mb-2">Message sent!</p>
+                  <p className="text-surface/70">Thanks for reaching out. I&apos;ll get back to you soon.</p>
+                  <button
+                    onClick={() => setStatus("idle")}
+                    className="mt-6 btn-secondary"
+                  >
+                    Send another
+                  </button>
                 </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-surface/70 mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-[var(--radius-button)] bg-white/50 border border-white/80 text-surface placeholder-surface/60 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
-                    placeholder="your@email.com"
-                    required
-                    aria-required="true"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-surface/70 mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-[var(--radius-button)] bg-white/50 border border-white/80 text-surface placeholder-surface/60 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 min-h-[120px] resize-none"
-                    placeholder="Your message..."
-                    required
-                    aria-required="true"
-                  />
-                </div>
-                <button type="submit" className="btn-primary w-full">
-                  Send Message
-                </button>
-              </form>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-surface/70 mb-2">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full px-4 py-3 rounded-[var(--radius-button)] bg-white/50 border border-white/80 text-surface placeholder-surface/60 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                      placeholder="Your name"
+                      required
+                      aria-required="true"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-surface/70 mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full px-4 py-3 rounded-[var(--radius-button)] bg-white/50 border border-white/80 text-surface placeholder-surface/60 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                      placeholder="your@email.com"
+                      required
+                      aria-required="true"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-surface/70 mb-2">
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      className="w-full px-4 py-3 rounded-[var(--radius-button)] bg-white/50 border border-white/80 text-surface placeholder-surface/60 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 min-h-[120px] resize-none"
+                      placeholder="Your message..."
+                      required
+                      aria-required="true"
+                    />
+                  </div>
+                  {status === "error" && (
+                    <p className="text-red-500 text-sm">Something went wrong. Try again.</p>
+                  )}
+                  <button
+                    type="submit"
+                    className="btn-primary w-full"
+                    disabled={status === "sending"}
+                  >
+                    {status === "sending" ? "Sending..." : "Send Message"}
+                  </button>
+                </form>
+              )}
             </GlassPanel>
           </ScrollReveal>
 
